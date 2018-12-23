@@ -37,7 +37,6 @@ public:
 private:
     boost::asio::ip::tcp::socket sock_;
     enum { max_msg = 1024 };
-    int already_read_;
     char buff_[1024];
     bool started_;
     std::string username_;
