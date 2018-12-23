@@ -17,7 +17,7 @@ void talk_to_svr::loop() {
         read_answer();
         std::srand(std::time(0));
         boost::this_thread::sleep
-        (boost::posix_time::millisec(rand() % 7000));
+        (boost::posix_time::millisec(std::rand_r() % 7000));
     }
 }
 
@@ -34,7 +34,7 @@ void talk_to_svr::process_msg()
     std::string msg = "";
     for (unsigned i = 0; i < max_msg; i++) {
         if (buff_[i] == '\n') {
-            msg += buff_[i] ;
+            msg += buff_[i];
             break;
         }
         msg += buff_[i];
