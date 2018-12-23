@@ -1,4 +1,5 @@
 # Лабораторная работа №8
+[![Build Status](https://travis-ci.org/Avsyankaa/lab-08-asio-client.svg?branch=master)](https://travis-ci.org/Avsyankaa/lab-08-asio-client)
 
 ## Задание
 
