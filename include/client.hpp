@@ -26,7 +26,7 @@ extern boost::asio::io_service service;
 class talk_to_svr
 {
 public:
-    talk_to_svr(const std::string & username): sock_(service),
+   explicit talk_to_svr(const std::string & username): sock_(service),
         started_(true), username_(username) {}
     void connect(boost::asio::ip::tcp::endpoint ep);
     void loop();
