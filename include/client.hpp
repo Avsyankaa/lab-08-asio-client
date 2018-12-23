@@ -47,6 +47,7 @@ private:
     void read_answer();
     void process_msg();
     void on_login(const std::string & msg) {
+        std::lock_guard<std::recursive_mutex> lock(mutex);
         std::cout << msg <<std::endl;
         do_ask_clients();
     }
