@@ -33,13 +33,13 @@ add_library(client STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
-add_executable(tests
+add_executable(main
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
-# add_executable(tests
- # ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
-#)
+ add_executable(tests
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
+)
 
 
 target_include_directories(client
@@ -49,7 +49,7 @@ target_include_directories(tests
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# target_link_libraries(main Boost::boost Boost::log Boost::thread Boost::system Boost::filesystem server)
+target_link_libraries(main Boost::boost Boost::log Boost::thread Boost::system Boost::filesystem client)
 target_link_libraries(tests GTest::main Boost::boost Boost::log Boost::thread Boost::date_time Boost::system Boost::filesystem client)
 target_link_libraries(client Boost::log Boost::thread Boost::date_time Boost::system Boost::filesystem Boost::boost)
 enable_testing()

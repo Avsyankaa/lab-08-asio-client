@@ -1,0 +1,95 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "which" "cmake"
+/usr/local/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "--version"
+cmake version 3.13.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug`
+  `-DCMAKE_BUILD_TYPE=Debug`
+  `-GUnix Makefiles`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/vagrant/Projects/lab-08-asio-client/tools/polly/gcc-7-cxx17-pic.cmake`
+  `-DCMAKE_EXE_LINKER=-fuse-ld=gold`
+  `-DHUNTER_CONFIGURATION_TYPES=Debug`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "-H." "-B/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug" "-DCMAKE_BUILD_TYPE=Debug" "-GUnix Makefiles" "-DCMAKE_TOOLCHAIN_FILE=/home/vagrant/Projects/lab-08-asio-client/tools/polly/gcc-7-cxx17-pic.cmake" "-DCMAKE_EXE_LINKER=-fuse-ld=gold" "-DHUNTER_CONFIGURATION_TYPES=Debug"
+-- [polly] Used toolchain: gcc 7 / c++17 support / PIC
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /root/.hunter
+-- [hunter] [ Hunter-ID: 70287b1 | Toolchain-ID: fc9dcb2 | Config-ID: dffbc08 ]
+-- [hunter] GTEST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.8.0-hunter-p11)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- Boost version: 1.68.0
+-- Found the following Boost libraries:
+--   log
+--   thread
+--   filesystem
+--   system
+--   date_time
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug`
+  `--config`
+  `Debug`
+  `--`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "--build" "/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug" "--config" "Debug" "--"
+Scanning dependencies of target client
+[ 12%] Building CXX object CMakeFiles/client.dir/sources/main.cpp.o
+[ 25%] Building CXX object CMakeFiles/client.dir/sources/source.cpp.o
+[ 37%] Linking CXX static library libclientd.a
+[ 37%] Built target client
+Scanning dependencies of target main
+[ 50%] Building CXX object CMakeFiles/main.dir/tests/test.cpp.o
+/home/vagrant/Projects/lab-08-asio-client/tests/test.cpp: In member function ‘virtual void talk_to_srv_Test1_Test::TestBody()’:
+/home/vagrant/Projects/lab-08-asio-client/tests/test.cpp:8:41: error: use of ‘talk_to_srv’ before deduction of ‘auto’
+     auto talk_to_srv = std::make_shared<talk_to_srv>("Asya");
+                                         ^~~~~~~~~~~
+/home/vagrant/Projects/lab-08-asio-client/tests/test.cpp:8:60: error: no matching function for call to ‘make_shared<<expression error> >(const char [5])’
+     auto talk_to_srv = std::make_shared<talk_to_srv>("Asya");
+                                                            ^
+In file included from /usr/include/c++/7/memory:81:0,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/config/no_tr1/memory.hpp:21,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/get_pointer.hpp:14,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/bind/mem_fn.hpp:25,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/mem_fn.hpp:22,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/bind/bind.hpp:26,
+                 from /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install/include/boost/bind.hpp:22,
+                 from /home/vagrant/Projects/lab-08-asio-client/include/client.hpp:12,
+                 from /home/vagrant/Projects/lab-08-asio-client/tests/test.cpp:5:
+/usr/include/c++/7/bits/shared_ptr.h:703:5: note: candidate: template<class _Tp, class ... _Args> std::shared_ptr<_Tp> std::make_shared(_Args&& ...)
+     make_shared(_Args&&... __args)
+     ^~~~~~~~~~~
+/usr/include/c++/7/bits/shared_ptr.h:703:5: note:   template argument deduction/substitution failed:
+/home/vagrant/Projects/lab-08-asio-client/tests/test.cpp:8:60: error: template argument 1 is invalid
+     auto talk_to_srv = std::make_shared<talk_to_srv>("Asya");
+                                                            ^
+At global scope:
+cc1plus: error: unrecognized command line option ‘-Wno-unused-command-line-argument’ [-Werror]
+cc1plus: all warnings being treated as errors
+make[2]: *** [CMakeFiles/main.dir/tests/test.cpp.o] Error 1
+CMakeFiles/main.dir/build.make:62: recipe for target 'CMakeFiles/main.dir/tests/test.cpp.o' failed
+make[1]: *** [CMakeFiles/main.dir/all] Error 2
+CMakeFiles/Makefile2:72: recipe for target 'CMakeFiles/main.dir/all' failed
+make: *** [all] Error 2
+Makefile:94: recipe for target 'all' failed

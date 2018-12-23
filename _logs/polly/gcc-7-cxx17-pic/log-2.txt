@@ -1,0 +1,77 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "which" "cmake"
+/usr/local/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "--version"
+cmake version 3.13.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug`
+  `-DCMAKE_BUILD_TYPE=Debug`
+  `-GUnix Makefiles`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/vagrant/Projects/lab-08-asio-client/tools/polly/gcc-7-cxx17-pic.cmake`
+  `-DCMAKE_EXE_LINKER=-fuse-ld=gold`
+  `-DHUNTER_CONFIGURATION_TYPES=Debug`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "-H." "-B/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug" "-DCMAKE_BUILD_TYPE=Debug" "-GUnix Makefiles" "-DCMAKE_TOOLCHAIN_FILE=/home/vagrant/Projects/lab-08-asio-client/tools/polly/gcc-7-cxx17-pic.cmake" "-DCMAKE_EXE_LINKER=-fuse-ld=gold" "-DHUNTER_CONFIGURATION_TYPES=Debug"
+-- [polly] Used toolchain: gcc 7 / c++17 support / PIC
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /root/.hunter
+-- [hunter] [ Hunter-ID: 70287b1 | Toolchain-ID: fc9dcb2 | Config-ID: dffbc08 ]
+-- [hunter] GTEST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.8.0-hunter-p11)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- [hunter] BOOST_ROOT: /root/.hunter/_Base/70287b1/fc9dcb2/dffbc08/Install (ver.: 1.68.0-p1)
+-- Boost version: 1.68.0
+-- Found the following Boost libraries:
+--   log
+--   thread
+--   filesystem
+--   system
+--   date_time
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug`
+  `--config`
+  `Debug`
+  `--`
+]
+[/home/vagrant/Projects/lab-08-asio-client]> "cmake" "--build" "/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug" "--config" "Debug" "--"
+Scanning dependencies of target client
+[ 16%] Building CXX object CMakeFiles/client.dir/sources/source.cpp.o
+[ 33%] Linking CXX static library libclientd.a
+[ 50%] Built target client
+Scanning dependencies of target tests
+[ 66%] Building CXX object CMakeFiles/tests.dir/sources/source.cpp.o
+[ 83%] Linking CXX executable tests
+[100%] Built target tests
+Execute command: [
+  `ctest`
+  `-C`
+  `Debug`
+]
+[/home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug]> "ctest" "-C" "Debug"
+Test project /home/vagrant/Projects/lab-08-asio-client/_builds/gcc-7-cxx17-pic-Debug
+    Start 1: unit_tests
+1/1 Test #1: unit_tests .......................   Passed   11.97 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  11.98 sec
