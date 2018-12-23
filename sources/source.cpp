@@ -16,7 +16,7 @@ void talk_to_svr::loop() {
     {
         write_request();
         read_answer();
-        std::srand(std::time(0)); 
+        std::srand(std::time(0));
         boost::this_thread::sleep
         (boost::posix_time::millisec(std::rand() % 7000));
     }
