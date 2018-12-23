@@ -22,7 +22,7 @@
 #include <ctime>
 #include <memory>
 extern boost::asio::io_service service;
-
+extern std::recursive_mutex mutex;
 class talk_to_svr
 {
 public:
