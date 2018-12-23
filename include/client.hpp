@@ -8,6 +8,10 @@
 #include <chrono>
 #include <algorithm>
 #include <cstdlib>
+#include <mutex>
+#include <vector>
+#include <ctime>
+#include <memory>
 #include <boost/aligned_storage.hpp>
 #include <boost/bind.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -17,10 +21,7 @@
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <boost/smart_ptr/make_shared_object.hpp>
 #include <boost/thread.hpp>
-#include <mutex>
-#include <vector>
-#include <ctime>
-#include <memory>
+
 extern boost::asio::io_service service;
 extern std::recursive_mutex mutex;
 class talk_to_svr
