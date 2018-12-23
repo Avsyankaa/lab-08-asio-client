@@ -3,6 +3,7 @@
 #include <client.hpp>
 
 boost::asio::io_service service;
+std::recursive_mutex mutex;
 
 void talk_to_svr::connect(boost::asio::ip::tcp::endpoint ep) {
     sock_.connect(ep);
@@ -39,6 +40,7 @@ void talk_to_svr::process_msg()
         }
         msg += buff_[i];
     }
+    std::lock_guard<std::recursive_mutex> lock(mutex);
     if ( msg.find("login ") == 0) on_login(msg);
     else if ( msg.find("ping") == 0) on_ping(msg);
     else if ( msg.find("clients ") == 0) on_clients(msg);
@@ -48,6 +50,7 @@ void talk_to_svr::process_msg()
 
 void talk_to_svr::on_ping(const std::string & msg)
 {
+    std::lock_guard<std::recursive_mutex> lock(mutex);
     std::cout << msg << std::endl;
     std::istringstream in(msg);
     std::string answer;
@@ -59,6 +62,7 @@ void talk_to_svr::on_ping(const std::string & msg)
 void talk_to_svr::on_clients(const std::string & msg)
 {
     std::string clients = msg.substr(8);
+    std::lock_guard<std::recursive_mutex> lock(mutex);
     std::cout << username_ << ", new client list:"
               << clients << std::endl;
 }
@@ -70,6 +74,7 @@ void talk_to_svr::do_ask_clients()
 }
 
 void talk_to_svr::write(const std::string & msg) {
+    std::lock_guard<std::recursive_mutex> lock(mutex);
     sock_.write_some(boost::asio::buffer(msg));
 }
 
